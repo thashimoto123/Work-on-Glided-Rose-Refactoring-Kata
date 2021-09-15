@@ -4,21 +4,48 @@ class Item {
     this.sellIn = sellIn;
     this.quality = quality;
   }
+
+  updateQuality() {
+    this.sellIn = this.sellIn - 1;
+    this.quality = this.quality - 1;
+  }
 }
 class AgedBrie extends Item {
   constructor(sellIn, quality){
     super("Aged Brie", sellIn, quality);
+  }
+
+  updateQuality() {
+    this.sellIn = this.sellIn - 1;
+    if (quality < 50) {
+      this.quality = this.quality + 1;
+    }
   }
 }
 class BackstagePass extends Item {
   constructor(sellIn, quality){
     super("Backstage passes to a TAFKAL80ETC concert", sellIn, quality);
   }
+
+  updateQuality() {
+    this.sellIn = this.sellIn - 1;
+    if (this.sellIn <= 0) {
+      this.quality = 0;
+    } else if (this.sellIn <= 5) {
+      this.quality = this.quality + 3;
+    } else if (this.sellIn <= 10) {
+      this.quality = this.quality + 2;
+    } else {
+      this.quality = this.quality + 1;
+    }
+  }
 }
+
 class Sulfuras extends Item {
   constructor(sellIn, quality){
     super("Sulfuras, Hand of Ragnaros", sellIn, quality);
   }
+
 }
 class Conjured {
   constructor(sellIn, quality){

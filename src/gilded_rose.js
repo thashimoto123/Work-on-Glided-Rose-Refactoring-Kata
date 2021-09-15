@@ -5,6 +5,26 @@ class Item {
     this.quality = quality;
   }
 }
+class AgedBrie extends Item {
+  constructor(sellIn, quality){
+    super("Aged Brie", sellIn, quality);
+  }
+}
+class BackstagePass extends Item {
+  constructor(sellIn, quality){
+    super("Backstage passes to a TAFKAL80ETC concert", sellIn, quality);
+  }
+}
+class Sulfuras extends Item {
+  constructor(sellIn, quality){
+    super("Sulfuras, Hand of Ragnaros", sellIn, quality);
+  }
+}
+class Conjured {
+  constructor(sellIn, quality){
+    super("Conjured Mana Cake", sellIn, quality);
+  }
+}
 
 class Shop {
   constructor(items=[]){

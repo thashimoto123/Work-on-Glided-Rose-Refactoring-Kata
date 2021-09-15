@@ -1,23 +1,44 @@
 class Item {
-  constructor(name, sellIn, quality){
+  UPPER = 50;
+  LOWER = 0;
+  constructor(name, sellIn, quality) {
     this.name = name;
     this.sellIn = sellIn;
     this.quality = quality;
   }
 
-  updateQuality() {
+  update(){
+    this.updateSellIn();
+    this.updateQuality();
+    this.afterUpdate();
+  }
+
+  updateSellIn() {
     this.sellIn = this.sellIn - 1;
+  }
+
+  updateQuality() {
     this.quality = this.quality - 1;
   }
+
+  afterUpdate () {
+    if (this.quality > this.UPPER) {
+      this.quality = this.UPPER;
+    }
+
+    if (this.quality > 0) {
+      this.quality = this.LOWER
+    }
+  }
 }
+
 class AgedBrie extends Item {
   constructor(sellIn, quality){
     super("Aged Brie", sellIn, quality);
   }
 
   updateQuality() {
-    this.sellIn = this.sellIn - 1;
-    if (quality < 50) {
+    if (this.quality < 50) {
       this.quality = this.quality + 1;
     }
   }
@@ -28,7 +49,6 @@ class BackstagePass extends Item {
   }
 
   updateQuality() {
-    this.sellIn = this.sellIn - 1;
     if (this.sellIn <= 0) {
       this.quality = 0;
     } else if (this.sellIn <= 5) {
@@ -42,14 +62,22 @@ class BackstagePass extends Item {
 }
 
 class Sulfuras extends Item {
-  constructor(sellIn, quality){
-    super("Sulfuras, Hand of Ragnaros", sellIn, quality);
+  constructor(sellIn){
+    super("Sulfuras, Hand of Ragnaros", sellIn, 80);
   }
 
+  updateQuality() {
+    return;
+  }
 }
-class Conjured {
+
+class Conjured extends Item {
   constructor(sellIn, quality){
     super("Conjured Mana Cake", sellIn, quality);
+  }
+
+  updateQuality() {
+    this.quality = this.quality - 2;
   }
 }
 
@@ -58,6 +86,10 @@ class Shop {
     this.items = items;
   }
   updateQuality() {
+    item.update();
+
+
+
     for (let i = 0; i < this.items.length; i++) {
       if (this.items[i].name != 'Aged Brie' && this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
         if (this.items[i].quality > 0) {

@@ -43,7 +43,8 @@ class AgedBrie extends Item {
 
   updateQuality() {
     if (this.quality < 50) {
-      this.quality = this.quality + 1;
+      let diff = (this.sellIn < 0) ? 2 : 1;
+      this.quality = this.quality + diff;
     }
   }
 }
@@ -66,11 +67,19 @@ class BackstagePass extends Item {
 }
 
 class Sulfuras extends Item {
-  constructor(sellIn, quality){
+  constructor(sellIn){
     super("Sulfuras, Hand of Ragnaros", sellIn, 80);
   }
 
+  updateSellIn() {
+    return;
+  }
+
   updateQuality() {
+    return;
+  }
+
+  afterUpdate() {
     return;
   }
 }

@@ -1,6 +1,6 @@
 class Item {
-  UPPER = 50;
-  LOWER = 0;
+  MAX_QUALITY = 50;
+  MIN_QUALITY = 0;
   constructor(name, sellIn, quality) {
     this.name = name;
     this.sellIn = sellIn;
@@ -26,12 +26,12 @@ class Item {
   }
 
   afterUpdate () {
-    if (this.quality > this.UPPER) {
-      this.quality = this.UPPER;
+    if (this.quality > this.MAX_QUALITY) {
+      this.quality = this.MAX_QUALITY;
     }
 
     if (this.quality < 0) {
-      this.quality = this.LOWER
+      this.quality = this.MIN_QUALITY
     }
   }
 }

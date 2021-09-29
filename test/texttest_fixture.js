@@ -13,7 +13,8 @@ const resultTest = () => {
     new BackstagePass(5, 49),
 
     // This Conjured item does not work properly yet
-    new Conjured(3, 6),
+    // new Conjured(3, 6),
+    new Item("Conjured Mana Cake", 3, 6),
   ];
 
   const days = Number(process.argv[2]) || 2;

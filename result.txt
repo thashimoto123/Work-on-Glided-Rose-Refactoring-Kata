@@ -1,6 +1,4 @@
-const {Shop, Item} = require("../src/gilded_rose");
-const { execSync } = require("child_process");
-const result = `OMGHAI!
+OMGHAI!
 
 -------- day 0 --------
 name, sellIn, quality
@@ -121,16 +119,3 @@ Backstage passes to a TAFKAL80ETC concert, 6, 33
 Backstage passes to a TAFKAL80ETC concert, 1, 50
 Backstage passes to a TAFKAL80ETC concert, -4, 0
 Conjured Mana Cake, -6, 0
-`;
-
-describe("Gilded Rose", function() {
-  it("compare result text", function () {
-    const text = execSync("node test/texttest_fixture.js 10", { encoding: "utf8" });
-    expect(text).toBe(result);
-  });
-  // it("should foo", function() {
-  //   const gildedRose = new Shop([new Item("foo", 0, 0)]);
-  //   const items = gildedRose.updateQuality();
-  //   expect(items[0].name).toBe("foo");
-  // });
-});
